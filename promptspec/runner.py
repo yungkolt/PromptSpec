@@ -4,7 +4,7 @@ import asyncio
 from typing import Dict, Any, List, Optional
 from dataclasses import dataclass, field
 
-from .gateway import LLMGateway, LLMResponse
+from .gateway import LLMGateway
 from .assertions import AssertionEngine
 from .spec import SpecParser
 from .utils import RateLimiter, ConcurrencyManager

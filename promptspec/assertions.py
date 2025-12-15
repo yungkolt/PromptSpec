@@ -4,7 +4,7 @@ import re
 import json
 from typing import Any, Dict, Optional
 
-from .gateway import LLMGateway, LLMResponse
+from .gateway import LLMGateway
 
 
 class AssertionError(Exception):

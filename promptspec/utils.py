@@ -1,8 +1,7 @@
 """Utility functions for rate limiting and concurrency management."""
 
 import asyncio
-import time
-from typing import Optional, Callable, Any
+from typing import Callable, Any
 from collections import defaultdict
 
 from .gateway import RateLimitError
@@ -73,7 +72,7 @@ class RateLimiter:
 
                 await asyncio.sleep(sleep_time)
                 backoff *= self.backoff_multiplier
-            except Exception as e:
+            except Exception:
                 # For non-rate-limit errors, don't retry
                 raise
 

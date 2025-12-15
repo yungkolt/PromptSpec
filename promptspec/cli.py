@@ -1,6 +1,5 @@
 """CLI interface for PromptSpec."""
 
-import sys
 from pathlib import Path
 from typing import Optional
 

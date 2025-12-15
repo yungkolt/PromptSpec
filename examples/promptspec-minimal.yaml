@@ -1,0 +1,13 @@
+# Minimal PromptSpec Test - Quick Ollama Test
+# This is a simple test to verify Ollama is working
+
+tests:
+  - description: "Simple hello test"
+    prompt: "Say 'Hello, PromptSpec!' in one sentence."
+    model: "ollama/llama3"
+    assertions:
+      - type: "contains"
+        value: "Hello"
+      - type: "latency"
+        threshold_ms: 60000  # Generous timeout for first run
+

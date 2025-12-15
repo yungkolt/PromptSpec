@@ -1,0 +1,67 @@
+# PromptSpec Example Configuration - Ollama Only
+# This file demonstrates test cases using only local Ollama models
+# Make sure Ollama is running: ollama serve
+# Pull models: ollama pull llama3
+
+defaults:
+  temperature: 0.7
+
+tests:
+  # Example 1: Basic Response Test
+  - description: "Test basic response from Ollama"
+    prompt: "Say hello in one sentence."
+    model: "ollama/llama3"
+    assertions:
+      - type: "contains"
+        value: "hello"
+      - type: "latency"
+        threshold_ms: 30000  # Local models may be slower
+
+  # Example 2: JSON Generation
+  - description: "Generate valid JSON response"
+    prompt: "Generate a JSON object with fields: name (string), age (integer). Use example values. Return only JSON, no other text."
+    model: "ollama/llama3"
+    assertions:
+      - type: "json_valid"
+      - type: "contains"
+        value: "name"
+      - type: "contains"
+        value: "age"
+      - type: "latency"
+        threshold_ms: 30000
+
+  # Example 3: Pattern Matching
+  - description: "Test regex pattern matching"
+    prompt: "Explain what Python is in one sentence."
+    model: "ollama/llama3"
+    assertions:
+      - type: "contains"
+        value: "Python"
+      - type: "regex"
+        pattern: "(programming|language|code)"
+      - type: "latency"
+        threshold_ms: 30000
+
+  # Example 4: Email Extraction
+  - description: "Extract email from text"
+    prompt: "Extract the email address from this text: 'Contact us at support@example.com for help.' Return only the email."
+    model: "ollama/llama3"
+    assertions:
+      - type: "regex"
+        pattern: "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}"
+      - type: "contains"
+        value: "support@example.com"
+      - type: "latency"
+        threshold_ms: 30000
+
+  # Example 5: Structured Data
+  - description: "Extract structured data as JSON"
+    prompt: "Extract the following information from: 'John Doe, 30 years old, lives in New York' as JSON. Return only JSON."
+    model: "ollama/llama3"
+    assertions:
+      - type: "json_valid"
+      - type: "contains"
+        value: "John"
+      - type: "latency"
+        threshold_ms: 30000
+

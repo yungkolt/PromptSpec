@@ -10,7 +10,7 @@ readme = "README.md"
 requires-python = ">=3.9"
 license = {text = "MIT"}
 authors = [
-    {name = "yungkolt", email = ""}
+    {name = "yungkolt"}
 ]
 keywords = ["llm", "testing", "prompts", "ai", "ollama", "prompt-engineering"]
 classifiers = [
@@ -49,7 +49,7 @@ Repository = "https://github.com/yungkolt/promptspec"
 Issues = "https://github.com/yungkolt/promptspec/issues"
 
 [tool.setuptools]
-packages = ["promptspec"]
+packages = {find = {exclude = ["tests*"]}}
 
 [tool.ruff]
 line-length = 100
